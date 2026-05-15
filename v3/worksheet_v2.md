@@ -1,10 +1,10 @@
 # Bid v2.1 Worksheet — Gelfand Residence
 
-_Generated: 2026-05-15T07:13:22.487125_
+_Generated: 2026-05-15T07:43:04.837614_
 
 ## Tier prices
-- **Base**: $165,000 (12w)
-- **Managed**: $182,000 (11w)
+- **Base**: $155,000 (12w)
+- **Managed**: $172,000 (11w)
 
 ## Project record
 - project_name: Gelfand Residence
@@ -39,7 +39,7 @@ _Generated: 2026-05-15T07:13:22.487125_
 - architectural_style: mountain contemporary
 - extraction_confidence: medium
 - source_pdf_sha256: 14483b9ce9d2da527a6f066c8d64a470b16dc8053cf88e5c03976f41acf7a35c
-- extraction_model: ensemble:gemini,anthropic,openai
+- extraction_model: ensemble:anthropic,gemini,openai
 - extraction_prompt_version: v1
 
 ## Framing attention zones
@@ -93,7 +93,7 @@ _Generated: 2026-05-15T07:13:22.487125_
   · Tie the garage wing back to the main house at the angled intersection with engineered connections; this is the trickiest geometry on the job
   · Frame the garage ceiling system ready to receive its portion of the roof — multiple ridges land on this wing
   · Sheathe walls before roof framing starts so the rotated wing is rigid
-- Glulam & structural-steel setting: wk 6.7 → +1.0w (crew 5)
+- Glulam / beam coordination: wk 6.7 → +1.0w (crew 5)
   · Fly and set the exposed glulam beams and the great room glulam truss that define the main-level vaulted ceilings.
   · Crane in the great room glulam truss first — it's the biggest piece and sets the ridge reference for the surrounding vaulted framing
   · Set exposed glulam beams across the great room / dining / kitchen per the RCP, protecting finish faces with blankets through the rigging
@@ -145,6 +145,6 @@ _Generated: 2026-05-15T07:13:22.487125_
 - sheathing_roof: 2
 
 ## Per-provider base estimates
-- gemini (gemini-3.1-pro-preview): framing=$152,000 total=$152,000
-- anthropic (claude-sonnet-4-6): framing=$168,500 total=$168,500
-- openai (gpt-5.5): framing=$178,000 total=$178,000
+- gemini (gemini-3.1-pro-preview): framing=$131,500 total=$131,500
+- anthropic (claude-sonnet-4-6): framing=$162,500 total=$162,500
+- openai (gpt-5.5): framing=$168,000 total=$168,000
