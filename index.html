@@ -3,36 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gelfand Residence — Sundance Creek Proposal</title>
+<title>Gelfand Residence — Sundance Creek</title>
 <style>/* ===========================================================================
- * Sundance Creek Group — Bid Proposal v2
- * &#34;Mountain Quarterly&#34; — editorial mountain-modern, not contractor-template
+ *  SUNDANCE CREEK — BID PROPOSAL v2
+ *  &#34;BLUEPRINT THEATER&#34; · industrial · architect-coded · theatrical scale
  * ========================================================================= */
 
-@import url(&#39;https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&amp;family=Source+Serif+4:opsz,wght@8..60,200..900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Anton&amp;family=Big+Shoulders+Display:wght@300;400;500;600;700;800;900&amp;family=Newsreader:opsz,wght,ital@6..72,200..800,0;6..72,200..800,1&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;display=swap&#39;);
 
 :root {
-  --paper: #F4F1EA;          /* warm cream — main background */
-  --paper-warm: #EEE8DA;     /* second-tier surface */
-  --ink: #1B1F1A;            /* deep forest-black — primary text */
-  --ink-soft: #2D3329;
-  --mountain: #2D3F33;       /* forest green — structural anchor */
-  --copper: #B96A3D;         /* oxidized copper — accent, used sparingly */
-  --copper-deep: #8A4B28;
-  --slate: #6F7768;          /* muted secondary text */
-  --slate-soft: #A8AEA1;
-  --snow: #FAFAF7;
-  --rule: rgba(27, 31, 26, 0.12);
-  --rule-strong: rgba(27, 31, 26, 0.25);
+  /* === paper &amp; ink === */
+  --paper:        #F5F1E6;          /* warm aging cream */
+  --paper-deep:   #ECE6D4;
+  --paper-edge:   #DDD3B8;
+  --ink:          #0A1929;          /* prussian-black */
+  --ink-soft:     #1A2A3D;
+  --cobalt:       #1B3D5F;          /* main accent */
+  --blueprint:    #2E5C8A;          /* mid blueprint blue */
+  --blueprint-soft: rgba(46, 92, 138, 0.12);
+  --burn:         #C44528;          /* PEAK emphasis only */
+  --pencil:       #5C5A4F;          /* technical annotations */
+  --rule:         rgba(10, 25, 41, 0.18);
+  --rule-soft:    rgba(10, 25, 41, 0.08);
+  --rule-strong:  rgba(10, 25, 41, 0.45);
 
-  --display: &#39;Fraunces&#39;, &#39;Times New Roman&#39;, serif;
-  --body: &#39;Source Serif 4&#39;, &#39;Iowan Old Style&#39;, Georgia, serif;
-  --mono: &#39;JetBrains Mono&#39;, ui-monospace, &#39;SF Mono&#39;, Menlo, monospace;
+  /* === type === */
+  --display:  &#39;Anton&#39;, &#39;Bebas Neue&#39;, &#39;Helvetica Neue&#39;, sans-serif;       /* hero, big numbers */
+  --industrial: &#39;Big Shoulders Display&#39;, &#39;Anton&#39;, sans-serif;             /* subheads, section numbers */
+  --body:     &#39;Newsreader&#39;, &#39;Iowan Old Style&#39;, Georgia, serif;            /* prose */
+  --mono:     &#39;IBM Plex Mono&#39;, ui-monospace, &#39;SF Mono&#39;, Menlo, monospace; /* technical detail */
+
+  /* === scale system === */
+  --tape-width: 56px;
+  --margin-content: 96px;
+  --section-pad-y: clamp(5rem, 10vw, 9rem);
+  --section-pad-x: clamp(1rem, 3vw, 3rem);
 }
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
 
 body {
   margin: 0;
@@ -40,57 +53,226 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--body);
-  font-size: 17px;
+  font-size: 17.5px;
   line-height: 1.55;
   font-feature-settings: &#34;kern&#34; 1, &#34;liga&#34; 1, &#34;calt&#34; 1;
+  font-variation-settings: &#34;opsz&#34; 16;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  position: relative;
+  /* paper grain — subtle but real */
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 99px, rgba(10,25,41,0.025) 99px 100px),
+    repeating-linear-gradient(90deg, transparent 0 99px, rgba(10,25,41,0.025) 99px 100px);
+  background-attachment: fixed;
+}
+
+/* keep content clear of the tape-measure rail on the left */
+body &gt; .section,
+body &gt; .cover,
+body &gt; .footer,
+body &gt; .masthead {
+  padding-left: var(--margin-content);
+}
+@media (max-width: 900px) {
+  :root { --tape-width: 32px; --margin-content: 52px; }
+}
+@media (max-width: 600px) {
+  :root { --tape-width: 22px; --margin-content: 36px; }
 }
 
 p { margin: 0 0 1em 0; }
 p:last-child { margin: 0; }
-a { color: var(--copper-deep); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 img { display: block; max-width: 100%; }
+a { color: var(--burn); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+a:hover { color: var(--cobalt); }
 strong { font-weight: 600; }
 
-/* ---------- Typography scale --------- */
+::selection { background: var(--burn); color: var(--paper); }
+
+/* ===========================================================================
+ *  SIGNATURE ELEMENT #1 · THE TAPE MEASURE
+ *  Persistent left-margin scale rail. Major marks every 100vh (&#34;FT N&#34;),
+ *  minor marks every 10vh. This is what every reader remembers.
+ * ========================================================================= */
+
+.tape {
+  position: fixed;
+  top: 0; bottom: 0; left: 0;
+  width: var(--tape-width);
+  background: var(--ink);
+  z-index: 50;
+  overflow: hidden;
+  pointer-events: none;
+  box-shadow:
+    inset -1px 0 0 rgba(245,241,230,0.08),
+    2px 0 24px rgba(0,0,0,0.18);
+}
+
+/* a long inner element scrolls in step with the page (translateY via JS) */
+.tape-track {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50000px; /* big enough for any practical document */
+  will-change: transform;
+  /* major + minor tick marks via repeating gradients */
+  background-image:
+    /* major ticks every 100vh, longer */
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(100vh - 1px),
+      rgba(245,241,230,0.55) calc(100vh - 1px),
+      rgba(245,241,230,0.55) 100vh
+    ),
+    /* minor ticks every 10vh */
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(10vh - 1px),
+      rgba(245,241,230,0.18) calc(10vh - 1px),
+      rgba(245,241,230,0.18) 10vh
+    );
+}
+
+/* minor tick lines start from the right edge (don&#39;t reach across) */
+.tape-track::before {
+  content: &#34;&#34;;
+  position: absolute;
+  top: 0; bottom: 0; right: 0;
+  width: 35%;
+  background: var(--ink);
+}
+
+/* numbered labels at major ticks. We render the first 20 manually. */
+.tape-labels {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  pointer-events: none;
+}
+.tape-labels .tick {
+  position: absolute;
+  left: 0; right: 0;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--burn);
+  letter-spacing: 0.12em;
+  text-align: center;
+  transform: translateY(-50%);
+  background: var(--ink);
+  padding: 2px 0;
+}
+
+.tape-brand {
+  position: absolute;
+  bottom: 1rem; left: 0; right: 0;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(245,241,230,0.55);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin: 0 auto;
+  width: max-content;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  bottom: 25vh;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+/* ===========================================================================
+ *  SIGNATURE ELEMENT #2 · STICKY MASTHEAD
+ *  Appears once you scroll past the hero. Magazine running-header feel.
+ * ========================================================================= */
+
+.masthead {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding-left: calc(var(--tape-width) + 1.5rem);
+  padding-right: 1.5rem;
+  height: 56px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  z-index: 40;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pencil);
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.masthead.visible { opacity: 1; transform: translateY(0); }
+.masthead .mark {
+  font-family: var(--display);
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.masthead .project { color: var(--ink); font-weight: 600; }
+.masthead .price {
+  font-family: var(--display);
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--burn);
+}
+
+/* ===========================================================================
+ *  TYPE SCALE
+ * ========================================================================= */
 
 h1 {
   font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 144, &#34;wght&#34; 380, &#34;SOFT&#34; 0, &#34;WONK&#34; 0;
-  font-weight: 380;
-  font-size: clamp(3.8rem, 11vw, 9.5rem);
-  line-height: 0.86;
-  letter-spacing: -0.04em;
+  font-size: clamp(4.5rem, 14vw, 11.5rem);
+  font-weight: 400;
+  line-height: 0.84;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
   margin: 0;
+  color: var(--ink);
 }
 
 h2 {
-  font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 96, &#34;wght&#34; 420, &#34;SOFT&#34; 30, &#34;WONK&#34; 0;
-  font-weight: 420;
-  font-size: clamp(2.1rem, 5vw, 3.6rem);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
+  font-family: var(--industrial);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  line-height: 0.96;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
   margin: 0 0 1.5rem 0;
   color: var(--ink);
-  max-width: 16ch;
+  max-width: 18ch;
 }
 
 h3 {
-  font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 36, &#34;wght&#34; 500;
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.15;
-  margin: 0 0 0.4rem 0;
-  letter-spacing: -0.005em;
+  font-family: var(--industrial);
+  font-weight: 600;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  margin: 0 0 0.5rem 0;
+  color: var(--ink);
 }
 
 h4 {
-  font-family: var(--body);
+  font-family: var(--industrial);
   font-weight: 600;
   font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
   margin: 0 0 0.4rem 0;
 }
 
@@ -98,109 +280,157 @@ h4 {
   font-family: var(--mono);
   font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--copper-deep);
-  margin-bottom: 1.25rem;
+  color: var(--burn);
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 .eyebrow::before {
   content: &#34;&#34;;
   display: inline-block;
-  width: 2rem;
-  height: 1px;
-  background: var(--copper);
+  width: 2.5rem;
+  height: 2px;
+  background: var(--burn);
 }
 
 .section-no {
-  font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  color: var(--slate);
-  text-transform: uppercase;
-}
-
-.pull {
   font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 60, &#34;wght&#34; 380, &#34;SOFT&#34; 70;
-  font-style: italic;
-  font-size: clamp(1.4rem, 2.6vw, 2rem);
-  line-height: 1.25;
-  color: var(--ink-soft);
-  max-width: 28ch;
-  margin: 0;
-}
-
-.lead {
-  font-family: var(--body);
-  font-size: 1.18rem;
-  line-height: 1.55;
-  color: var(--ink);
-  max-width: 60ch;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.85;
+  letter-spacing: 0.005em;
+  color: var(--paper-edge);
+  -webkit-text-stroke: 1.5px var(--cobalt);
+  text-stroke: 1.5px var(--cobalt);
+  user-select: none;
 }
 
 .cap {
   font-family: var(--mono);
   font-size: 0.7rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--slate);
+  color: var(--pencil);
+}
+
+.lead {
+  font-family: var(--body);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  font-variation-settings: &#34;opsz&#34; 24, &#34;wght&#34; 400;
 }
 
 .figure {
   font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 144, &#34;wght&#34; 420;
   font-feature-settings: &#34;tnum&#34; 1, &#34;lnum&#34; 1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0.005em;
 }
 
-/* ---------- Layout primitives --------- */
+/* ===========================================================================
+ *  SCALE-LINE DIVIDER  ├──────────────┤
+ *  Used between sections instead of plain borders.
+ * ========================================================================= */
 
-.section {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 5rem);
+.scale-rule {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  height: 24px;
   position: relative;
 }
+.scale-rule::before,
+.scale-rule::after {
+  content: &#34;&#34;;
+  display: block;
+  width: 1px;
+  height: 14px;
+  background: var(--rule-strong);
+}
+.scale-rule .bar {
+  flex: 1;
+  height: 1px;
+  background: var(--rule-strong);
+  position: relative;
+}
+.scale-rule .bar::before,
+.scale-rule .bar::after {
+  content: &#34;&#34;;
+  position: absolute;
+  top: -6px;
+  width: 1px;
+  height: 7px;
+  background: var(--rule-strong);
+}
+.scale-rule .bar::before { left: 33%; }
+.scale-rule .bar::after  { left: 66%; }
 
+/* ===========================================================================
+ *  LAYOUT
+ * ========================================================================= */
+
+.section {
+  padding: var(--section-pad-y) var(--section-pad-x);
+  position: relative;
+  max-width: 1300px;
+  margin: 0 auto;
+}
 .section + .section { border-top: 1px solid var(--rule); }
 
-.section--dark {
-  background: var(--mountain);
+.section--ink {
+  background: var(--ink);
   color: var(--paper);
   max-width: none;
   border: none;
+  margin: 0;
 }
-.section--dark .section-inner { max-width: 1280px; margin: 0 auto; padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 5vw, 5rem); }
-.section--dark h2, .section--dark h3 { color: var(--paper); }
-.section--dark .eyebrow { color: var(--copper); }
-.section--dark .cap, .section--dark .section-no { color: var(--slate-soft); }
-.section--dark a { color: var(--copper); }
+.section--ink .section-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: var(--section-pad-y) var(--section-pad-x);
+}
+.section--ink h2, .section--ink h3, .section--ink h4 { color: var(--paper); }
+.section--ink .eyebrow { color: var(--burn); }
+.section--ink .cap { color: var(--paper-edge); }
+.section--ink .section-no {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--paper-edge);
+  text-stroke: 1.5px var(--paper-edge);
+}
+.section--ink .lead { color: rgba(245,241,230,0.92); }
 
 .section-header {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 2rem;
-  align-items: baseline;
-  margin-bottom: 3rem;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+  margin-bottom: 3.5rem;
+  padding-top: 0.5rem;
 }
 @media (max-width: 720px) {
-  .section-header { grid-template-columns: 1fr; gap: 0.75rem; }
+  .section-header { grid-template-columns: 1fr; gap: 0.5rem; }
 }
 
-/* ---------- Cover --------- */
+/* ===========================================================================
+ *  COVER
+ * ========================================================================= */
 
 .cover {
   position: relative;
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem) calc(var(--margin-content) + 1rem);
   color: var(--paper);
   overflow: hidden;
+  background: var(--ink);
 }
+
 .cover-hero,
 .cover-placeholder {
   position: absolute;
@@ -210,15 +440,14 @@ h4 {
 .cover-hero {
   background-size: cover;
   background-position: center;
-  animation: heroZoom 14s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  transform-origin: center;
-  filter: saturate(0.95) contrast(1.02);
+  filter: grayscale(0.15) contrast(1.08) brightness(0.7);
+  animation: heroBreathe 18s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
 }
 .cover-placeholder {
   background:
-    radial-gradient(ellipse at 30% 30%, rgba(185, 106, 61, 0.35) 0%, transparent 55%),
-    radial-gradient(ellipse at 70% 70%, rgba(45, 63, 51, 0.95) 0%, transparent 60%),
-    linear-gradient(135deg, #2D3F33 0%, #1B1F1A 100%);
+    radial-gradient(ellipse at 30% 30%, rgba(196,69,40,0.4) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 70%, rgba(46,92,138,0.55) 0%, transparent 60%),
+    linear-gradient(135deg, var(--cobalt) 0%, var(--ink) 100%);
 }
 .cover::after {
   content: &#34;&#34;;
@@ -226,11 +455,14 @@ h4 {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.85) 100%),
-    radial-gradient(circle at 20% 100%, rgba(185,106,61,0.18) 0%, transparent 50%);
+    /* hatching texture — subtle architectural-print feel */
+    repeating-linear-gradient(135deg, transparent 0 3px, rgba(196,69,40,0.04) 3px 4px),
+    /* dark vignette */
+    linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.2) 30%, rgba(10,25,41,0.9) 100%),
+    /* burn glow from one corner */
+    radial-gradient(circle at 8% 100%, rgba(196,69,40,0.35) 0%, transparent 45%);
   pointer-events: none;
 }
-
 .cover &gt; * { position: relative; z-index: 2; }
 
 .cover-top {
@@ -238,161 +470,184 @@ h4 {
   justify-content: space-between;
   align-items: flex-start;
   font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(244,241,234,0.8);
+  color: rgba(245,241,230,0.75);
 }
 .cover-top .mark {
   font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 36, &#34;wght&#34; 500;
-  font-size: 1rem;
-  text-transform: none;
-  letter-spacing: -0.005em;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--paper);
 }
 
 .cover-middle {
   align-self: end;
-  padding-bottom: clamp(2rem, 6vw, 4rem);
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 2rem;
+  padding-bottom: clamp(2rem, 5vw, 4rem);
 }
 
 .cover h1 {
   color: var(--paper);
+  max-width: 14ch;
   text-wrap: balance;
-  max-width: 18ch;
   opacity: 0;
-  animation: rise 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  animation: type-in 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
 }
-.cover .eyebrow { color: var(--copper); opacity: 0; animation: rise 1s ease 0s forwards; }
-.cover .eyebrow::before { background: var(--copper); }
+.cover .eyebrow {
+  color: var(--burn);
+  opacity: 0;
+  animation: type-in 1s ease 0s forwards;
+}
+.cover .eyebrow::before { background: var(--burn); }
 
 .cover-meta {
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 2.5rem;
   font-family: var(--mono);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   letter-spacing: 0.04em;
-  color: rgba(244,241,234,0.85);
-  max-width: 720px;
+  color: rgba(245,241,230,0.92);
   opacity: 0;
-  animation: rise 1.4s ease 0.6s forwards;
+  animation: type-in 1.4s ease 1s forwards;
 }
 .cover-meta .key {
-  font-size: 0.65rem;
-  letter-spacing: 0.18em;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--copper);
+  color: var(--burn);
   margin-bottom: 0.4rem;
   display: block;
 }
 .cover-meta .val {
   font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 18, &#34;wght&#34; 500;
-  font-size: 1.15rem;
-  letter-spacing: -0.005em;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--paper);
-  text-transform: none;
 }
 
 .cover-bottom {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(244,241,234,0.18);
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(245,241,230,0.25);
+  opacity: 0;
+  animation: type-in 1.4s ease 1.6s forwards;
 }
 .cover-bottom .scroll-cue {
   font-family: var(--mono);
   font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(244,241,234,0.7);
+  color: rgba(245,241,230,0.7);
 }
 .cover-bottom .price-cue {
-  font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 96, &#34;wght&#34; 380;
-  font-size: 2.2rem;
-  letter-spacing: -0.02em;
-  color: var(--paper);
   text-align: right;
 }
 .cover-bottom .price-cue small {
   display: block;
   font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.18em;
-  color: rgba(244,241,234,0.65);
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--burn);
   margin-bottom: 0.3rem;
   text-transform: uppercase;
 }
+.cover-bottom .price-cue .amount {
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 5vw, 3.6rem);
+  line-height: 0.9;
+  letter-spacing: 0.005em;
+  color: var(--paper);
+}
 
-@keyframes heroZoom { from { transform: scale(1.08); } to { transform: scale(1.0); } }
-@keyframes rise {
-  from { opacity: 0; transform: translateY(24px); }
+@keyframes heroBreathe {
+  0% { transform: scale(1.04); }
+  100% { transform: scale(1.0); }
+}
+@keyframes type-in {
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .draft-stamp {
   position: fixed;
-  top: 1rem; right: 1rem;
+  top: 12px; right: 1rem;
   font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.2em;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--copper);
-  border: 1px solid var(--copper);
+  color: var(--burn);
+  border: 1.5px solid var(--burn);
   padding: 0.4rem 0.7rem;
-  z-index: 1000;
-  background: rgba(244,241,234,0.85);
-  backdrop-filter: blur(6px);
+  z-index: 70;
+  background: var(--paper);
+  transform: rotate(2deg);
 }
 
-/* ---------- Why Sundance --------- */
+/* ===========================================================================
+ *  01 · WHY SUNDANCE — stat slab
+ * ========================================================================= */
 
 .why-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
-  margin-top: 3rem;
-  border-top: 1px solid var(--rule);
+  margin-top: 2rem;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
 }
 .why-card {
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.75rem;
   border-right: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
   position: relative;
 }
 .why-card:last-child { border-right: none; }
 .why-card .stat {
   font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 144, &#34;wght&#34; 380;
-  font-feature-settings: &#34;tnum&#34; 1;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height: 0.9;
-  letter-spacing: -0.03em;
+  font-feature-settings: &#34;tnum&#34; 1, &#34;lnum&#34; 1;
+  font-size: clamp(3.5rem, 7vw, 5.5rem);
+  line-height: 0.86;
+  letter-spacing: 0.005em;
   color: var(--ink);
   display: block;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
+.why-card .stat sup { font-size: 0.45em; color: var(--burn); }
 .why-card .stat-label {
   font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--slate);
-  line-height: 1.5;
+  color: var(--pencil);
+  line-height: 1.6;
+}
+.why-card .tag {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--burn);
 }
 @media (max-width: 800px) {
   .why-grid { grid-template-columns: repeat(2, 1fr); }
   .why-card:nth-child(2n) { border-right: none; }
+  .why-card:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
 }
 
-/* ---------- Project Understanding --------- */
+/* ===========================================================================
+ *  02 · PROJECT UNDERSTANDING
+ * ========================================================================= */
 
 .project-grid {
   display: grid;
@@ -401,48 +656,75 @@ h4 {
   align-items: start;
   margin-bottom: 4rem;
 }
-@media (max-width: 900px) {
-  .project-grid { grid-template-columns: 1fr; }
-}
+@media (max-width: 900px) { .project-grid { grid-template-columns: 1fr; } }
 
 .scope-text {
   font-family: var(--body);
-  font-size: 1.15rem;
+  font-variation-settings: &#34;opsz&#34; 24, &#34;wght&#34; 400;
+  font-size: 1.18rem;
   line-height: 1.65;
   color: var(--ink);
-  position: relative;
 }
 .scope-text p:first-child::first-letter {
   font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 144, &#34;wght&#34; 400, &#34;SOFT&#34; 50;
-  font-size: 5.5rem;
-  line-height: 0.85;
+  font-size: 7rem;
+  line-height: 0.78;
   float: left;
-  margin: 0.05em 0.08em 0 -0.04em;
-  color: var(--copper-deep);
-  font-weight: 400;
+  margin: 0.1em 0.1em 0 -0.06em;
+  color: var(--burn);
+  letter-spacing: 0;
 }
 
 .massing-viewer {
   position: relative;
-  background: var(--paper-warm);
-  border: 1px solid var(--rule);
-  height: 420px;
+  background: var(--paper-deep);
+  border: 2px solid var(--ink);
+  height: 460px;
   overflow: hidden;
 }
-.massing-viewer canvas { display: block; width: 100% !important; height: 100% !important; }
+.massing-viewer::before {
+  /* technical-drawing crosshatch */
+  content: &#34;&#34;;
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 19px, rgba(10,25,41,0.05) 19px 20px),
+    repeating-linear-gradient(90deg, transparent 0 19px, rgba(10,25,41,0.05) 19px 20px);
+  pointer-events: none;
+  z-index: 1;
+}
+.massing-viewer canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  z-index: 2;
+}
 .massing-viewer .massing-controls {
   position: absolute;
   bottom: 0.75rem;
   left: 0.75rem;
+  z-index: 3;
   font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--slate);
-  background: rgba(244,241,234,0.85);
+  color: var(--ink);
+  background: var(--paper);
   padding: 0.4rem 0.7rem;
-  backdrop-filter: blur(6px);
+  border: 1px solid var(--ink);
+}
+.massing-viewer .massing-label {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 3;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--burn);
 }
 
 .fly-around {
@@ -450,10 +732,9 @@ h4 {
   grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--ink);
-  border: 1px solid var(--rule);
+  border: 2px solid var(--ink);
 }
 @media (max-width: 900px) { .fly-around { grid-template-columns: 1fr 1fr; } }
-
 .fly-around figure {
   margin: 0;
   position: relative;
@@ -462,35 +743,43 @@ h4 {
   background: var(--paper);
 }
 .fly-around img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
+  filter: grayscale(0.05) contrast(1.04);
 }
-.fly-around figure:hover img { transform: scale(1.04); }
+.fly-around figure:hover img { transform: scale(1.05); filter: grayscale(0) contrast(1.08); }
 .fly-around figcaption {
   position: absolute;
-  bottom: 0.75rem;
-  left: 0.75rem;
+  bottom: 0; left: 0; right: 0;
   font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--paper);
-  background: rgba(27, 31, 26, 0.7);
-  padding: 0.4rem 0.7rem;
-  backdrop-filter: blur(4px);
+  background: rgba(10, 25, 41, 0.88);
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+}
+.fly-around figcaption::before {
+  content: &#34;↑&#34;;
+  color: var(--burn);
+  font-size: 0.9rem;
 }
 
-/* ---------- Tiers --------- */
+/* ===========================================================================
+ *  03 · TIERS — architect&#39;s dimension callouts
+ * ========================================================================= */
 
 .tiers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   margin-top: 3rem;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
 }
 @media (max-width: 900px) { .tiers { grid-template-columns: 1fr; } }
 
@@ -501,66 +790,122 @@ h4 {
   flex-direction: column;
   position: relative;
   background: var(--paper);
-  min-height: 600px;
+  min-height: 640px;
 }
 .tier:last-child { border-right: none; }
+@media (max-width: 900px) {
+  .tier { border-right: none; border-bottom: 1px solid var(--rule); }
+  .tier:last-child { border-bottom: none; }
+}
 
 .tier--featured {
   background: var(--ink);
   color: var(--paper);
+  /* slight elevation feel without box-shadow */
+  position: relative;
+}
+.tier--featured::before {
+  content: &#34;&#34;;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(196,69,40,0.18) 0%, transparent 50%);
 }
 .tier--featured h3 { color: var(--paper); }
-.tier--featured .tier-feature { color: rgba(244,241,234,0.92); }
-.tier--featured .tier-feature::before { color: var(--copper); }
+.tier--featured .tier-feature { color: rgba(245,241,230,0.95); }
+.tier--featured .tier-feature::before { color: var(--burn); }
 .tier--featured .tier-price { color: var(--paper); }
-.tier--featured .tier-name { color: var(--copper); }
-.tier--featured .tier-duration { color: rgba(244,241,234,0.75); }
-.tier--featured .tier-rule { background: var(--copper); }
+.tier--featured .tier-name { color: var(--burn); }
+.tier--featured .tier-duration { color: rgba(245,241,230,0.75); }
+.tier--featured .tier-rule { background: var(--burn); }
 
 .tier .badge {
   position: absolute;
-  top: -0.65rem; left: 2rem;
+  top: -1px; left: -1px;
   font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  background: var(--copper);
+  background: var(--burn);
   color: var(--paper);
-  padding: 0.4rem 0.7rem;
+  padding: 0.55rem 0.85rem;
+  z-index: 5;
 }
 
 .tier-name {
   font-family: var(--mono);
   font-size: 0.72rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--slate);
-  font-weight: 500;
-  margin-bottom: 1rem;
+  color: var(--pencil);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
 }
+
+/* DIMENSION CALLOUT — architect&#39;s notation around the price */
+.tier-price-block {
+  position: relative;
+  margin-bottom: 0.75rem;
+  padding: 0 0.5rem;
+}
+.tier-price-block::before,
+.tier-price-block::after {
+  content: &#34;&#34;;
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  background: var(--rule-strong);
+}
+.tier-price-block::before { left: 0; }
+.tier-price-block::after  { right: 0; }
+.tier--featured .tier-price-block::before,
+.tier--featured .tier-price-block::after {
+  background: rgba(245,241,230,0.35);
+}
+.tier-price-block .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--burn);
+  font-weight: 700;
+}
+.tier-price-block .arrow.left { left: -8px; }
+.tier-price-block .arrow.right { right: -8px; }
 
 .tier-price {
   font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 144, &#34;wght&#34; 380;
   font-feature-settings: &#34;tnum&#34; 1, &#34;lnum&#34; 1;
-  font-size: clamp(3rem, 5.5vw, 4.5rem);
-  line-height: 0.92;
-  letter-spacing: -0.03em;
+  font-size: clamp(3.5rem, 6.5vw, 5.5rem);
+  line-height: 0.86;
+  letter-spacing: 0.005em;
   color: var(--ink);
-  margin: 0 0 0.5rem 0;
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+}
+.tier-price .currency {
+  font-size: 0.45em;
+  margin-right: 0.1em;
+  color: var(--burn);
+  font-weight: 400;
 }
 
 .tier-duration {
   font-family: var(--mono);
   font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--slate);
-  margin-bottom: 2rem;
+  color: var(--pencil);
+  margin-bottom: 1.75rem;
 }
 
 .tier-rule {
-  height: 1px;
+  height: 1.5px;
   background: var(--rule-strong);
   margin: 0 0 1.5rem 0;
 }
@@ -577,19 +922,22 @@ h4 {
   font-size: 0.96rem;
   line-height: 1.5;
   display: flex;
-  gap: 0.7rem;
+  gap: 0.75rem;
   align-items: flex-start;
-  position: relative;
+  border-bottom: 1px solid var(--rule-soft);
 }
+.tier-feature:last-child { border-bottom: none; }
 .tier-feature::before {
-  content: &#34;›&#34;;
-  color: var(--copper-deep);
-  font-family: var(--display);
-  font-size: 1.1rem;
-  line-height: 1;
+  content: &#34;→&#34;;
+  color: var(--burn);
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 600;
   flex-shrink: 0;
-  width: 0.9rem;
+  line-height: 1.5;
+  width: 1.1rem;
 }
+.tier--featured .tier-feature { border-bottom-color: rgba(245,241,230,0.12); }
 
 .tier-narratives {
   margin-top: 3rem;
@@ -597,93 +945,100 @@ h4 {
   border-top: 1px solid var(--rule);
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 2rem;
-  font-size: 0.94rem;
-  line-height: 1.65;
+  gap: 2.5rem;
+  font-size: 0.96rem;
+  line-height: 1.7;
   color: var(--ink-soft);
 }
 .tier-narratives .narrative-label {
   font-family: var(--mono);
   font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--copper-deep);
+  color: var(--burn);
 }
-@media (max-width: 900px) {
-  .tier-narratives { grid-template-columns: 1fr; gap: 0.75rem; }
+.tier-narratives strong.tier-marker {
+  font-family: var(--industrial);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
 }
+@media (max-width: 900px) { .tier-narratives { grid-template-columns: 1fr; gap: 1rem; } }
 
-/* ---------- Schedule + Market --------- */
+/* ===========================================================================
+ *  04 · SCHEDULE + MARKET — full-bleed ink
+ * ========================================================================= */
 
-.schedule-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  margin-top: 3rem;
-}
+.schedule-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-top: 3rem; }
 
 .gantt {
-  background: var(--paper);
+  background: transparent;
   padding: 0;
 }
 .gantt-row {
   display: grid;
-  grid-template-columns: 240px 1fr;
+  grid-template-columns: minmax(220px, 280px) 1fr;
   align-items: center;
-  gap: 1.5rem;
-  padding: 1.1rem 0;
-  border-top: 1px solid var(--rule);
+  gap: 2rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(245,241,230,0.18);
 }
-.gantt-row:last-child { border-bottom: 1px solid var(--rule); }
+.gantt-row:last-child { border-bottom: 1px solid rgba(245,241,230,0.18); }
 .gantt-label .name {
-  font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 24, &#34;wght&#34; 500;
-  font-size: 1.05rem;
+  font-family: var(--industrial);
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   display: block;
+  color: var(--paper);
+  margin-bottom: 0.3rem;
 }
 .gantt-label .crew {
   font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--slate);
-  margin-top: 0.3rem;
-  display: block;
+  color: rgba(245,241,230,0.6);
 }
 .gantt-bar {
   position: relative;
-  height: 8px;
-  background: var(--paper-warm);
+  height: 14px;
+  background: rgba(245,241,230,0.08);
+  border-left: 2px solid rgba(245,241,230,0.18);
 }
 .gantt-bar-fill {
   position: absolute;
   top: 0; bottom: 0;
-  background: var(--mountain);
+  background: var(--cobalt);
   transform-origin: left center;
   transform: scaleX(0);
-  animation: ganttGrow 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: ganttGrow 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.gantt-bar-fill.featured { background: var(--copper); }
+.gantt-bar-fill.featured { background: var(--burn); }
 .gantt-bar-text {
   position: absolute;
   right: -3rem;
   top: 50%;
   transform: translateY(-50%);
   font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  color: var(--ink-soft);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--paper);
 }
 .gantt-weeks {
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 1.5rem;
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  gap: 2rem;
   margin-top: 1rem;
   font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--slate);
+  color: rgba(245,241,230,0.6);
 }
 .gantt-weeks .scale {
   display: flex;
@@ -694,189 +1049,228 @@ h4 {
 .market-grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 3rem;
-  margin-top: 2rem;
+  gap: 3.5rem;
+  margin-top: 3rem;
+  align-items: start;
 }
 @media (max-width: 900px) { .market-grid { grid-template-columns: 1fr; } }
 
-.market-card { background: transparent; padding: 0; }
 .market-card .label {
   font-family: var(--mono);
   font-size: 0.7rem;
-  letter-spacing: 0.18em;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--slate);
-  margin-bottom: 1rem;
+  color: var(--burn);
+  margin-bottom: 1.5rem;
 }
-.market-card .lumber-gauge { width: 100%; max-width: 360px; }
+.market-card .lumber-gauge {
+  width: 100%; max-width: 380px;
+}
 .market-callout {
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
   padding-left: 1.5rem;
-  border-left: 2px solid var(--copper);
-  font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 24, &#34;wght&#34; 380, &#34;SOFT&#34; 50;
+  border-left: 2px solid var(--burn);
+  font-family: var(--body);
   font-style: italic;
+  font-variation-settings: &#34;opsz&#34; 24, &#34;wght&#34; 400, &#34;ital&#34; 1;
   font-size: 1.1rem;
-  line-height: 1.5;
-  color: var(--ink-soft);
+  line-height: 1.55;
+  color: var(--paper);
+  max-width: 36ch;
 }
 
 .counters {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0;
-  border-top: 1px solid var(--rule);
-  border-left: 1px solid var(--rule);
+  border-top: 1px solid rgba(245,241,230,0.18);
+  border-left: 1px solid rgba(245,241,230,0.18);
 }
 .counter {
-  padding: 1.5rem 1.25rem;
-  border-right: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  text-align: left;
+  padding: 1.75rem 1.5rem;
+  border-right: 1px solid rgba(245,241,230,0.18);
+  border-bottom: 1px solid rgba(245,241,230,0.18);
 }
 .counter .num {
   font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 96, &#34;wght&#34; 400;
   font-feature-settings: &#34;tnum&#34; 1, &#34;lnum&#34; 1;
-  font-size: clamp(2rem, 3.5vw, 2.6rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  line-height: 0.86;
+  letter-spacing: 0.005em;
   display: block;
-  color: var(--ink);
-  margin-bottom: 0.5rem;
+  color: var(--paper);
+  margin-bottom: 0.6rem;
 }
 .counter .lbl {
   font-family: var(--mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--slate);
+  color: rgba(245,241,230,0.7);
 }
 
-/* ---------- Value Engineering --------- */
+/* ===========================================================================
+ *  05 · VALUE ENGINEERING — index cards
+ * ========================================================================= */
 
 .ve-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0;
   margin-top: 3rem;
-  border-top: 1px solid var(--rule);
+  border-top: 2px solid var(--ink);
 }
 @media (max-width: 900px) { .ve-grid { grid-template-columns: 1fr; } }
+
 .ve-card {
-  padding: 2rem;
+  padding: 2.25rem 2rem;
   border-right: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
   background: var(--paper);
   position: relative;
 }
 .ve-card:nth-child(2n) { border-right: none; }
-.ve-card[data-severity=&#34;watch&#34;] { background: var(--paper-warm); }
+.ve-card[data-severity=&#34;watch&#34;] { background: var(--paper-deep); }
 .ve-card[data-severity=&#34;important&#34;] {
-  background: var(--ink);
+  background: var(--burn);
   color: var(--paper);
 }
 .ve-card[data-severity=&#34;important&#34;] h4 { color: var(--paper); }
-.ve-card[data-severity=&#34;important&#34;] .ve-tag { color: var(--copper); }
+.ve-card[data-severity=&#34;important&#34;] .ve-tag { color: var(--paper); }
+.ve-card[data-severity=&#34;important&#34;] p { color: rgba(245,241,230,0.95); }
+
 .ve-card .ve-tag {
   font-family: var(--mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--copper-deep);
-  margin-bottom: 1rem;
-  display: block;
+  color: var(--burn);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 .ve-card h4 {
-  font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 36, &#34;wght&#34; 500;
-  font-size: 1.35rem;
-  font-weight: 500;
-  line-height: 1.15;
-  margin-bottom: 1rem;
-  letter-spacing: -0.005em;
-  color: inherit;
+  font-family: var(--industrial);
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-bottom: 1.1rem;
+  color: var(--ink);
 }
 .ve-card p {
-  font-size: 0.96rem;
-  line-height: 1.55;
+  font-family: var(--body);
+  font-variation-settings: &#34;opsz&#34; 20, &#34;wght&#34; 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
 }
 
-/* ---------- Portfolio + Map --------- */
+/* ===========================================================================
+ *  06 · PORTFOLIO
+ * ========================================================================= */
 
 .portfolio {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   margin-top: 3rem;
-  border-top: 1px solid var(--rule);
+  border-top: 2px solid var(--ink);
 }
 @media (max-width: 900px) { .portfolio { grid-template-columns: 1fr; } }
 
 .portfolio-card {
-  padding: 1.5rem;
+  padding: 1.75rem 1.5rem;
   border-right: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
   display: flex;
   flex-direction: column;
+  background: var(--paper);
 }
 .portfolio-card:last-child { border-right: none; }
 .portfolio-card .img {
   aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, var(--mountain) 0%, var(--ink) 100%);
+  background: linear-gradient(135deg, var(--cobalt) 0%, var(--ink) 100%);
   display: flex;
   align-items: flex-end;
-  padding: 1rem;
+  padding: 1.25rem;
   color: var(--paper);
-  font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 36, &#34;wght&#34; 500;
+  font-family: var(--industrial);
+  font-weight: 600;
   font-size: 1.1rem;
-  letter-spacing: -0.005em;
-  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
 }
+.portfolio-card .img::before {
+  /* technical crosshatch */
+  content: &#34;&#34;;
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(45deg, transparent 0 5px, rgba(245,241,230,0.04) 5px 6px),
+    repeating-linear-gradient(-45deg, transparent 0 5px, rgba(245,241,230,0.04) 5px 6px);
+}
+.portfolio-card .img &gt; * { position: relative; }
 .portfolio-card .builder {
   font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.18em;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--copper-deep);
-  margin-bottom: 0.4rem;
+  color: var(--burn);
+  margin-bottom: 0.5rem;
 }
 .portfolio-card .name {
-  font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 30, &#34;wght&#34; 500;
-  font-size: 1.2rem;
-  margin-bottom: 0.6rem;
-  letter-spacing: -0.005em;
+  font-family: var(--industrial);
+  font-weight: 700;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.8rem;
+  color: var(--ink);
 }
 .portfolio-card .desc {
-  font-size: 0.92rem;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  line-height: 1.55;
   color: var(--ink-soft);
-  line-height: 1.5;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
+  flex: 1;
 }
 .portfolio-card .stat {
   font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  color: var(--slate);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--pencil);
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--rule);
 }
 .portfolio-card .stat strong {
   font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 18, &#34;wght&#34; 500;
-  font-size: 1rem;
-  letter-spacing: -0.005em;
+  font-size: 1.4rem;
+  letter-spacing: 0.005em;
   color: var(--ink);
-  font-weight: 500;
+  font-weight: 400;
+  margin-right: 0.5rem;
 }
 
 .bid-map {
   width: 100%;
-  height: 420px;
+  height: 460px;
   margin-top: 3rem;
-  border: 1px solid var(--rule);
+  border: 2px solid var(--ink);
   position: relative;
-  background: var(--paper-warm);
+  background: var(--paper-deep);
   overflow: hidden;
 }
 .bid-map--unavailable {
@@ -885,38 +1279,42 @@ h4 {
   justify-content: center;
   font-family: var(--mono);
   font-size: 0.72rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--slate);
+  color: var(--pencil);
 }
 
-/* ---------- Terms --------- */
+/* ===========================================================================
+ *  07 · TERMS
+ * ========================================================================= */
 
 .terms .section-inner &gt; p,
 .terms .section-inner &gt; h3,
 .terms .section-inner &gt; ul {
-  max-width: 60ch;
+  max-width: 64ch;
 }
 .terms h3 {
-  margin-top: 2.5rem;
-  font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 36, &#34;wght&#34; 500;
+  margin-top: 2.75rem;
+  color: var(--paper);
 }
 .terms ul {
   list-style: none;
   padding: 0;
 }
 .terms ul li {
-  padding: 0.5rem 0 0.5rem 1.5rem;
+  padding: 0.7rem 0 0.7rem 1.75rem;
   position: relative;
-  font-size: 0.98rem;
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(245,241,230,0.15);
+  font-family: var(--body);
 }
 .terms ul li::before {
-  content: &#34;—&#34;;
-  color: var(--copper);
+  content: &#34;□&#34;;
+  color: var(--burn);
   position: absolute;
   left: 0;
-  top: 0.5rem;
+  top: 0.7rem;
+  font-family: var(--mono);
 }
 
 .signature {
@@ -924,46 +1322,49 @@ h4 {
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   margin-top: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--rule);
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(245,241,230,0.25);
 }
 .signature .line {
-  border-bottom: 1px solid var(--paper);
-  margin-bottom: 0.75rem;
-  height: 3rem;
+  border-bottom: 1.5px solid var(--paper);
+  margin-bottom: 0.85rem;
+  height: 3.5rem;
 }
 .signature .lbl {
   font-family: var(--mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--slate-soft);
+  color: rgba(245,241,230,0.72);
 }
 
-/* ---------- Footer --------- */
+/* ===========================================================================
+ *  FOOTER
+ * ========================================================================= */
 
 .footer {
-  background: var(--ink);
-  color: var(--slate-soft);
-  padding: 3rem 1.5rem;
+  background: var(--paper);
+  color: var(--pencil);
+  padding: 3rem var(--section-pad-x);
   text-align: center;
   font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
+  border-top: 2px solid var(--ink);
 }
 .footer .mark {
   font-family: var(--display);
-  font-variation-settings: &#34;opsz&#34; 36, &#34;wght&#34; 500;
-  font-size: 1.4rem;
-  letter-spacing: -0.005em;
-  color: var(--paper);
-  text-transform: none;
+  font-size: 2.4rem;
+  letter-spacing: 0.06em;
+  color: var(--ink);
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
-/* ---------- PDF print --------- */
+/* ===========================================================================
+ *  PDF PRINT
+ * ========================================================================= */
 
 @page {
   size: Letter;
@@ -971,17 +1372,98 @@ h4 {
 }
 @media print {
   body { background: var(--paper); }
+  body &gt; .section, body &gt; .cover, body &gt; .footer { padding-left: 0; }
+  .tape, .masthead, .draft-stamp { display: none; }
   .cover { min-height: 9.5in; page-break-after: always; }
   .section { padding: 1rem 0; }
   .gantt-bar-fill { animation: none; transform: scaleX(1); }
   .cover-hero { animation: none; }
-  .cover h1, .cover .eyebrow, .cover-meta { opacity: 1; animation: none; }
+  .cover h1, .cover .eyebrow, .cover-meta, .cover-bottom { opacity: 1; animation: none; }
 }
 </style>
 </head>
 <body>
 
-<div class="draft-stamp">Draft · For Owner Review</div>
+
+<aside class="tape" aria-hidden="true">
+  <div class="tape-track" id="tape-track">
+    <div class="tape-labels">
+      
+      <div class="tick" style="top: 100vh">FT&nbsp;01</div>
+      
+      <div class="tick" style="top: 200vh">FT&nbsp;02</div>
+      
+      <div class="tick" style="top: 300vh">FT&nbsp;03</div>
+      
+      <div class="tick" style="top: 400vh">FT&nbsp;04</div>
+      
+      <div class="tick" style="top: 500vh">FT&nbsp;05</div>
+      
+      <div class="tick" style="top: 600vh">FT&nbsp;06</div>
+      
+      <div class="tick" style="top: 700vh">FT&nbsp;07</div>
+      
+      <div class="tick" style="top: 800vh">FT&nbsp;08</div>
+      
+      <div class="tick" style="top: 900vh">FT&nbsp;09</div>
+      
+      <div class="tick" style="top: 1000vh">FT&nbsp;10</div>
+      
+      <div class="tick" style="top: 1100vh">FT&nbsp;11</div>
+      
+      <div class="tick" style="top: 1200vh">FT&nbsp;12</div>
+      
+      <div class="tick" style="top: 1300vh">FT&nbsp;13</div>
+      
+      <div class="tick" style="top: 1400vh">FT&nbsp;14</div>
+      
+      <div class="tick" style="top: 1500vh">FT&nbsp;15</div>
+      
+      <div class="tick" style="top: 1600vh">FT&nbsp;16</div>
+      
+      <div class="tick" style="top: 1700vh">FT&nbsp;17</div>
+      
+      <div class="tick" style="top: 1800vh">FT&nbsp;18</div>
+      
+      <div class="tick" style="top: 1900vh">FT&nbsp;19</div>
+      
+      <div class="tick" style="top: 2000vh">FT&nbsp;20</div>
+      
+      <div class="tick" style="top: 2100vh">FT&nbsp;21</div>
+      
+      <div class="tick" style="top: 2200vh">FT&nbsp;22</div>
+      
+      <div class="tick" style="top: 2300vh">FT&nbsp;23</div>
+      
+      <div class="tick" style="top: 2400vh">FT&nbsp;24</div>
+      
+      <div class="tick" style="top: 2500vh">FT&nbsp;25</div>
+      
+      <div class="tick" style="top: 2600vh">FT&nbsp;26</div>
+      
+      <div class="tick" style="top: 2700vh">FT&nbsp;27</div>
+      
+      <div class="tick" style="top: 2800vh">FT&nbsp;28</div>
+      
+      <div class="tick" style="top: 2900vh">FT&nbsp;29</div>
+      
+      <div class="tick" style="top: 3000vh">FT&nbsp;30</div>
+      
+      <div class="tick" style="top: 3100vh">FT&nbsp;31</div>
+      
+    </div>
+  </div>
+  <div class="tape-brand">SUNDANCE CREEK · MEASURED IN FEET</div>
+</aside>
+
+
+<header class="masthead" id="masthead">
+  <span class="mark">Sundance Creek</span>
+  <span class="project">№ SC-260515 · Gelfand Residence</span>
+  <span class="price">$162,000</span>
+</header>
+
+<div class="draft-stamp">DRAFT · OWNER REVIEW</div>
 
 
 <section class="cover">
@@ -990,12 +1472,12 @@ h4 {
   
 
   <div class="cover-top">
-    <span class="mark">Sundance Creek Group</span>
-    <span>Proposal № SC-2026</span>
+    <span class="mark">Sundance Creek</span>
+    <span>Proposal № SC-260515 · Sheet 1 / 1</span>
   </div>
 
   <div class="cover-middle">
-    <span class="eyebrow">A Framing Proposal · Mountain Quarterly</span>
+    <span class="eyebrow">A Framing Proposal · Wasatch County · UT</span>
     <h1>Gelfand Residence</h1>
     <div class="cover-meta">
       <div>
@@ -1003,7 +1485,7 @@ h4 {
         <span class="val">Gelfand Project</span>
       </div>
       <div>
-        <span class="key">From</span>
+        <span class="key">Drawn by</span>
         <span class="val">Andre Mataele</span>
       </div>
       <div>
@@ -1016,8 +1498,8 @@ h4 {
   <div class="cover-bottom">
     <span class="scroll-cue">↓ Scroll the proposal</span>
     <div class="price-cue">
-      <small>Recommended scope</small>
-      $162,000
+      <small>Recommended Scope</small>
+      <div class="amount">$162,000</div>
     </div>
   </div>
 </section>
@@ -1025,28 +1507,32 @@ h4 {
 
 <section class="section">
   <div class="section-header">
-    <span class="section-no">01 / Provenance</span>
+    <span class="section-no">01</span>
     <div>
-      <span class="eyebrow">Why Sundance</span>
+      <span class="eyebrow">Provenance</span>
       <h2>The framing crew Wasatch builders ask for by name.</h2>
     </div>
   </div>
   <div class="why-grid">
     <div class="why-card">
-      <span class="stat">64+</span>
-      <span class="stat-label">Projects framed in this market</span>
+      <span class="tag">·01</span>
+      <span class="stat">64<sup>+</sup></span>
+      <span class="stat-label">Projects framed<br>in this market</span>
     </div>
     <div class="why-card">
-      <span class="stat">16<sup style="font-size: 0.6em;">%</sup></span>
-      <span class="stat-label">Recent bids won &amp; built</span>
+      <span class="tag">·02</span>
+      <span class="stat">16<sup>%</sup></span>
+      <span class="stat-label">Recent bids won<br>&amp; built</span>
     </div>
     <div class="why-card">
+      <span class="tag">·03</span>
       <span class="stat">8–10</span>
-      <span class="stat-label">Hours on site, Mon–Fri</span>
+      <span class="stat-label">Hours on site<br>Monday–Friday</span>
     </div>
     <div class="why-card">
+      <span class="tag">·04</span>
       <span class="stat">Full</span>
-      <span class="stat-label">Workers comp + GL · Utah DOPL</span>
+      <span class="stat-label">Workers comp + GL<br>Utah DOPL licensed</span>
     </div>
   </div>
 </section>
@@ -1054,16 +1540,17 @@ h4 {
 
 <section class="section">
   <div class="section-header">
-    <span class="section-no">02 / Reading the Plans</span>
+    <span class="section-no">02</span>
     <div>
-      <span class="eyebrow">Project Understanding</span>
-      <h2>We've read your drawings.</h2>
+      <span class="eyebrow">Reading the Drawings</span>
+      <h2>We've read your plans.</h2>
     </div>
   </div>
 
   <div class="project-grid">
-    <div class="scope-text"><p>We've gone through the Gelfand Residence plans for the Hideout lot — 4,876 sq ft total across a 2,409 sq ft main level over a 2,467 sq ft walkout/daylight basement, with a 995 sq ft three-car garage rotated roughly 110° off the main footprint. The framing scope is driven by three things on these sheets: the exposed glulam beams and glulam truss in the great room/dining/kitchen, the vaulted ceiling work at 12'-1 1/8" over a 10'-1 1/8" plate, and a roof with 11-plus ridges mixing 6:12, 4:12, and 2:12 pitches with 3-ft overhangs.</p><p>All walls are 2x6 exterior / 2x4 interior stick frame per the plans, which is our bread and butter. We've priced this as a labor-only scope — you provide lumber and hardware, we provide the crew, fasteners, forklift and crane mobilization, and daily cleanup. Structural sheets S2.1/S2.2 weren't in the set we received; if a steel beam schedule shows up there, we'll price that separately rather than guess at it now.</p></div>
+    <div class="scope-text">This proposal covers stick-framing labor for 4,876 total square feet, single-story, walkout basement, mountain contemporary. Sundance Creek will deliver crew, nails, forklift, and crane — lumber and hardware provided by you. Estimated duration: 12 weeks at 8–10 hours per day, Mon–Fri.</div>
     <div class="massing-viewer" id="massing-viewer">
+      <span class="massing-label">Sheet M.01 · Massing</span>
       <div class="massing-controls">Drag · scroll to zoom</div>
     </div>
   </div>
@@ -1072,23 +1559,23 @@ h4 {
   <div class="fly-around">
     
     <figure>
-      <img src="14483b9ce9d2da52__v1__front.png" alt="Gelfand Residence — Front elevation"/>
-      <figcaption>Front elevation</figcaption>
+      <img src="14483b9ce9d2da52__v1__front.png" alt="Gelfand Residence — Front"/>
+      <figcaption><span>Front elevation</span><span>SH.02</span></figcaption>
     </figure>
     
     <figure>
-      <img src="14483b9ce9d2da52__v1__side.png" alt="Gelfand Residence — Side elevation"/>
-      <figcaption>Side elevation</figcaption>
+      <img src="14483b9ce9d2da52__v1__side.png" alt="Gelfand Residence — Side"/>
+      <figcaption><span>Side elevation</span><span>SH.03</span></figcaption>
     </figure>
     
     <figure>
-      <img src="14483b9ce9d2da52__v1__aerial.png" alt="Gelfand Residence — Aerial elevation"/>
-      <figcaption>Aerial elevation</figcaption>
+      <img src="14483b9ce9d2da52__v1__aerial.png" alt="Gelfand Residence — Aerial"/>
+      <figcaption><span>Aerial elevation</span><span>SH.04</span></figcaption>
     </figure>
     
     <figure>
-      <img src="14483b9ce9d2da52__v1__dusk.png" alt="Gelfand Residence — Dusk elevation"/>
-      <figcaption>Dusk elevation</figcaption>
+      <img src="14483b9ce9d2da52__v1__dusk.png" alt="Gelfand Residence — Dusk"/>
+      <figcaption><span>Dusk elevation</span><span>SH.05</span></figcaption>
     </figure>
     
   </div>
@@ -1098,10 +1585,10 @@ h4 {
 
 <section class="section">
   <div class="section-header">
-    <span class="section-no">03 / Options</span>
+    <span class="section-no">03</span>
     <div>
       <span class="eyebrow">Three Ways to Build</span>
-      <h2>Pick the scope &amp; service level that fits this project.</h2>
+      <h2>Pick the scope &amp; service level.</h2>
     </div>
   </div>
 
@@ -1109,9 +1596,13 @@ h4 {
     
     <div class="tier ">
       
-      <span class="tier-name">Good</span>
-      <div class="tier-price">$145,000</div>
-      <div class="tier-duration">~12 weeks</div>
+      <span class="tier-name">Good · Option 1</span>
+      <div class="tier-price-block">
+        <span class="arrow left">⊢</span>
+        <div class="tier-price"><span class="currency">$</span>145,000</div>
+        <span class="arrow right">⊣</span>
+      </div>
+      <div class="tier-duration">≈ 12 weeks · on the schedule</div>
       <div class="tier-rule"></div>
       <ul class="tier-features">
         
@@ -1128,9 +1619,13 @@ h4 {
     
     <div class="tier ">
       
-      <span class="tier-name">Better</span>
-      <div class="tier-price">$145,000</div>
-      <div class="tier-duration">~12 weeks</div>
+      <span class="tier-name">Better · Option 2</span>
+      <div class="tier-price-block">
+        <span class="arrow left">⊢</span>
+        <div class="tier-price"><span class="currency">$</span>145,000</div>
+        <span class="arrow right">⊣</span>
+      </div>
+      <div class="tier-duration">≈ 12 weeks · on the schedule</div>
       <div class="tier-rule"></div>
       <ul class="tier-features">
         
@@ -1146,10 +1641,14 @@ h4 {
     </div>
     
     <div class="tier tier--featured">
-      <span class="badge">Recommended</span>
-      <span class="tier-name">Best</span>
-      <div class="tier-price">$162,000</div>
-      <div class="tier-duration">~11 weeks</div>
+      <span class="badge">★ Recommended</span>
+      <span class="tier-name">Best · Option 3</span>
+      <div class="tier-price-block">
+        <span class="arrow left">⊢</span>
+        <div class="tier-price"><span class="currency">$</span>162,000</div>
+        <span class="arrow right">⊣</span>
+      </div>
+      <div class="tier-duration">≈ 11 weeks · on the schedule</div>
       <div class="tier-rule"></div>
       <ul class="tier-features">
         
@@ -1177,29 +1676,16 @@ h4 {
   </div>
 
   
-  <div class="tier-narratives">
-    <span class="narrative-label">Notes on the tiers</span>
-    <div>
-      
-      <p><strong style="font-family: var(--display); font-variation-settings: 'opsz' 30, 'wght' 600; font-size: 1.05rem; color: var(--ink);">Good.</strong> Full rough framing labor for the main level, walkout basement, angled 3-car garage wing, and the complex multi-ridge roof, including setting the exposed glulam beams and glulam truss in the great room. 12-week duration, fasteners and crane/forklift mobilization included, daily cleanup. Slotted into our schedule on a first-available basis.</p>
-      
-      <p><strong style="font-family: var(--display); font-variation-settings: 'opsz' 30, 'wght' 600; font-size: 1.05rem; color: var(--ink);">Better.</strong> Identical scope and price to Good — same 12-week framing package covering walkout basement, main level, angled garage, vaulted ceilings, and exposed glulam work. Listed here so you can see there&#39;s no hidden mid-tier upcharge; the only real step up on a project this size is the Best tier&#39;s schedule and PM services.</p>
-      
-      <p><strong style="font-family: var(--display); font-variation-settings: 'opsz' 30, 'wght' 600; font-size: 1.05rem; color: var(--ink);">Best.</strong> Same framing scope, but compressed to 11 weeks with a one-week change-order buffer baked in, plus Sundance Concierge: priority queue placement ahead of our routine work, a dedicated PM as your single point of contact through the glulam sets and roof framing, and weekly progress photos. The $17,400 premium buys schedule certainty and change-order flexibility on a plan this complex — worth it if you&#39;re holding a tight closing or expect owner-driven tweaks.</p>
-      
-    </div>
-  </div>
-  
 </section>
 
 
-<section class="section section--dark">
+<section class="section section--ink">
   <div class="section-inner">
     <div class="section-header">
-      <span class="section-no" style="color: var(--copper);">04 / Time &amp; Material</span>
+      <span class="section-no">04</span>
       <div>
         <span class="eyebrow">Schedule, Market &amp; Material Flow</span>
-        <h2>What you're buying, in time and tonnage.</h2>
+        <h2>Time &amp; tonnage.</h2>
       </div>
     </div>
 
@@ -1309,9 +1795,9 @@ h4 {
       <div class="market-card">
         <span class="label">Current Lumber Market</span>
         
-          <p style="color: rgba(244,241,234,0.7); font-size: 0.95rem; max-width: 32ch; line-height: 1.6;">
-            Live lumber-index unavailable for this proposal. Final pricing is anchored to the
-            day-of-contract Random Lengths composite.
+          <p style="color: rgba(245,241,230,0.7); font-size: 0.95rem; max-width: 32ch; line-height: 1.6;">
+            Live lumber-index unavailable. Final pricing anchored to the day-of-contract
+            Random Lengths composite.
           </p>
         
       </div>
@@ -1344,34 +1830,46 @@ h4 {
 
 <section class="section">
   <div class="section-header">
-    <span class="section-no">05 / Intelligence</span>
+    <span class="section-no">05</span>
     <div>
-      <span class="eyebrow">Three Things You Should Know</span>
-      <h2>Site-specific observations from reading the plans.</h2>
+      <span class="eyebrow">Site Intelligence</span>
+      <h2>4 things you should know.</h2>
     </div>
   </div>
   <div class="ve-grid">
     
     <div class="ve-card" data-severity="important">
-      <span class="ve-tag">★ Important</span>
+      <span class="ve-tag">
+        ★ Important
+        · 01 / 04
+      </span>
       <h4>Angled garage wing will drive the roof framing schedule</h4>
       <p>The garage rotates roughly 110° off the main house, which collides with 11+ ridges at varying elevations and a stack of valleys where the wings meet. We&#39;ll want to set the main ridge first and work the garage tie-in last so we&#39;re cutting valley jacks to real field measurements, not plan dimensions. Plan on roof framing taking about a third of the 12-week duration.</p>
     </div>
     
     <div class="ve-card" data-severity="watch">
-      <span class="ve-tag">✕ Watch</span>
+      <span class="ve-tag">
+        ✕ Watch
+        · 02 / 04
+      </span>
       <h4>Exposed glulams in the great room need a crane day, not a forklift day</h4>
       <p>The RCP shows exposed glulam beams plus a glulam truss over the great room/dining/kitchen at the 12&#39;-1&#34; vaulted ceiling. Because these are architectural-grade and stay visible, we handle them with soft slings and stage the crane pick separately from the rest of the main-level deck. Budget a half-day premium and confirm beam delivery is sequenced before sheathing.</p>
     </div>
     
     <div class="ve-card" data-severity="watch">
-      <span class="ve-tag">✕ Watch</span>
+      <span class="ve-tag">
+        ✕ Watch
+        · 03 / 04
+      </span>
       <h4>Walkout basement tie-in depends on final grade certification</h4>
       <p>Bedrooms 1-3 open to daylight on the downhill side, which means the lower-level wall heights and window/door head heights are driven by surveyed grade, not the plan. We&#39;d like to walk the pad with the excavator before we cut lower-level plates — catching a 6&#34; grade variance now is a no-cost fix, catching it after sheathing is a change order.</p>
     </div>
     
     <div class="ve-card" data-severity="info">
-      <span class="ve-tag">◆ Note</span>
+      <span class="ve-tag">
+        ◆ Note
+        · 04 / 04
+      </span>
       <h4>Structural sheets S2.1/S2.2 not in the set we reviewed</h4>
       <p>Our number assumes no structural steel based on what&#39;s visible, but the S-series wasn&#39;t included in this excerpt. If the engineer specs steel flitch plates or moment frames at the great room glulam truss, that&#39;s added scope. Send those sheets when available and we&#39;ll confirm or revise within 48 hours — no surprises at framing start.</p>
     </div>
@@ -1383,42 +1881,42 @@ h4 {
 
 <section class="section">
   <div class="section-header">
-    <span class="section-no">06 / Precedent</span>
+    <span class="section-no">06</span>
     <div>
       <span class="eyebrow">Recent Comparable Work</span>
-      <h2>Builders we framed for in this exact category.</h2>
+      <h2>Builders we framed for in this category.</h2>
     </div>
   </div>
 
   <div class="portfolio">
     
     <div class="portfolio-card">
-      <div class="img">KEATING PROJECT</div>
-      <div class="builder">MW WATTS CONSTRUCTION</div>
+      <div class="img"><span>KEATING PROJECT</span></div>
+      <div class="builder">MW WATTS CONSTRUCTION · SH.01</div>
       <div class="name">KEATING PROJECT</div>
       <div class="desc">5,582 sqft, 2 stories, walkout basement, mountain contemporary; framed in 15 weeks</div>
       
-      <div class="stat"><strong>$243,517</strong> · awarded</div>
+      <div class="stat"><strong>$243,517</strong>awarded</div>
       
     </div>
     
     <div class="portfolio-card">
-      <div class="img">Hillier Residence Lot 74</div>
-      <div class="builder">Points North Builds</div>
+      <div class="img"><span>Hillier Residence Lot 74</span></div>
+      <div class="builder">Points North Builds · SH.02</div>
       <div class="name">Hillier Residence Lot 74</div>
       <div class="desc">5,312 sqft, single story, walkout basement, mountain contemporary; framed in 15 weeks</div>
       
-      <div class="stat"><strong>$188,693</strong> · bidding</div>
+      <div class="stat"><strong>$188,693</strong>bidding</div>
       
     </div>
     
     <div class="portfolio-card">
-      <div class="img">Winder Residence</div>
-      <div class="builder">Elevation Contruction</div>
+      <div class="img"><span>Winder Residence</span></div>
+      <div class="builder">Elevation Contruction · SH.03</div>
       <div class="name">Winder Residence</div>
       <div class="desc">5,905 sqft, single story, walkout basement, mountain contemporary; framed in 11 weeks</div>
       
-      <div class="stat"><strong>$163,075</strong> · bidding</div>
+      <div class="stat"><strong>$163,075</strong>bidding</div>
       
     </div>
     
@@ -1439,40 +1937,39 @@ h4 {
     L.control.zoom({ position: 'bottomright' }).addTo(map);
     pins.forEach(p => {
       const isProject = p.kind === 'project';
-      const color = isProject ? '#B96A3D' : '#1B1F1A';
-      const size = isProject ? 18 : 12;
+      const color = isProject ? '#C44528' : '#0A1929';
+      const size = isProject ? 20 : 12;
       const icon = L.divIcon({
         className: 'pin pin-' + p.kind,
-        html: `<div style="background:${color};width:${size}px;height:${size}px;border-radius:50%;border:2.5px solid #F4F1EA;box-shadow:0 0 0 1px rgba(27,31,26,0.3),0 6px 14px rgba(0,0,0,0.25)"></div>`,
+        html: `<div style="background:${color};width:${size}px;height:${size}px;border-radius:50%;border:3px solid #F5F1E6;box-shadow:0 0 0 1.5px rgba(10,25,41,0.5),0 8px 18px rgba(0,0,0,0.3)"></div>`,
         iconSize: [size + 6, size + 6],
         iconAnchor: [(size + 6)/2, (size + 6)/2]
       });
-      L.marker([p.lat, p.lng], { icon }).addTo(map).bindPopup(`<span style="font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#6F7768">${isProject ? 'This Project' : 'Recent Build'}</span><br><strong style="font-family:Fraunces,serif;font-size:16px;color:#1B1F1A">${p.label}</strong>`);
+      L.marker([p.lat, p.lng], { icon }).addTo(map).bindPopup(`<span style="font-family:IBM Plex Mono,monospace;font-weight:600;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#C44528">${isProject ? '★ This Project' : '· Recent Build'}</span><br><strong style="font-family:Anton,sans-serif;font-size:17px;letter-spacing:0.04em;text-transform:uppercase;color:#0A1929">${p.label}</strong>`);
     });
   })();
 </script>
 </section>
 
 
-<section class="section section--dark terms">
+<section class="section section--ink terms">
   <div class="section-inner">
     <div class="section-header">
-      <span class="section-no" style="color: var(--copper);">07 / Agreement</span>
+      <span class="section-no">07</span>
       <div>
-        <span class="eyebrow">Terms &amp; Acceptance</span>
+        <span class="eyebrow">Agreement</span>
         <h2>How the contract works.</h2>
       </div>
     </div>
 
-    <p class="lead" style="color: rgba(244,241,234,0.92); max-width: 60ch;">
+    <p class="lead" style="color: rgba(245,241,230,0.92); max-width: 64ch;">
       Contractor estimates the above scope of work, to be completed in the duration shown for
-      the price listed for the selected tier. This proposal is valid for thirty (30) days
-      from the date below. Upon acceptance, Client shall pay a deposit equal to 10% of the
-      selected tier's total bid price, plus materials needed to start — securing your project
-      on the Contractor's schedule.
+      the price listed for the selected tier. Proposal valid thirty (30) days from the date
+      below. Upon acceptance, Client pays a deposit equal to 10% of the selected tier's total
+      bid price, plus materials needed to start.
     </p>
 
-    <h3>Sundance agrees to</h3>
+    <h3>Sundance Agrees To</h3>
     <ul>
       <li>Procure and supply equipment required to perform the labor.</li>
       <li>Clean up debris and remove trash daily and upon completion.</li>
@@ -1480,7 +1977,7 @@ h4 {
       <li>Hold professional standards for safety and crew conduct.</li>
     </ul>
 
-    <h3>Client agrees to</h3>
+    <h3>Client Agrees To</h3>
     <ul>
       <li>Provide complete plans, lumber, and hardware in a timely manner.</li>
       <li>Provide site security, electrical power, and bathroom facilities.</li>
@@ -1502,8 +1999,8 @@ h4 {
 </section>
 
 <footer class="footer">
-  <span class="mark">Sundance Creek Group</span>
-  801.722.4173 · andre@sundance-creek.com · Utah DOPL Licensed &amp; Insured
+  <span class="mark">SUNDANCE CREEK</span>
+  801.722.4173 · andre@sundance-creek.com · Utah DOPL · Wasatch County
 </footer>
 
 
@@ -1519,35 +2016,33 @@ h4 {
   const container = document.getElementById('massing-viewer');
   if (container) {
     const w = container.clientWidth;
-    const h = 420;
+    const h = 460;
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xEEE8DA);
-    const camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 5000);
+    scene.background = new THREE.Color(0xECE6D4);
+    const camera = new THREE.PerspectiveCamera(38, w / h, 0.1, 5000);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(w, h);
     renderer.setPixelRatio(window.devicePixelRatio || 1);
     container.appendChild(renderer.domElement);
 
-    scene.add(new THREE.HemisphereLight(0xFAFAF7, 0x6F7768, 0.95));
-    const dir = new THREE.DirectionalLight(0xFFEAD0, 0.85);
-    dir.position.set(60, 90, 50);
-    scene.add(dir);
-    const rim = new THREE.DirectionalLight(0xB96A3D, 0.25);
-    rim.position.set(-40, 30, -40);
-    scene.add(rim);
+    scene.add(new THREE.HemisphereLight(0xF5F1E6, 0x5C5A4F, 0.9));
+    const dir = new THREE.DirectionalLight(0xFFEAD0, 0.6);
+    dir.position.set(60, 110, 50); scene.add(dir);
+    const rim = new THREE.DirectionalLight(0xC44528, 0.35);
+    rim.position.set(-50, 30, -40); scene.add(rim);
 
     const cx = model.bbox_w / 2;
     const cz = model.bbox_d / 2;
-    // Mountain-stone palette
-    const palette = ['#2D3F33', '#3F5447', '#B96A3D', '#6F7768'];
+    // Industrial blueprint palette
+    const palette = ['#1B3D5F', '#2E5C8A', '#0A1929', '#5C5A4F'];
     model.boxes.forEach((b, i) => {
       const geo = new THREE.BoxGeometry(b.w, b.h, b.d);
       const mat = new THREE.MeshLambertMaterial({ color: palette[i % palette.length] });
       const mesh = new THREE.Mesh(geo, mat);
-      mesh.position.set(b.x + b.w / 2 - cx, b.y + b.h / 2, b.z + b.d / 2 - cz);
+      mesh.position.set(b.x + b.w/2 - cx, b.y + b.h/2, b.z + b.d/2 - cz);
       scene.add(mesh);
       const edges = new THREE.EdgesGeometry(geo);
-      const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x1B1F1A, opacity: 0.55, transparent: true }));
+      const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0xF5F1E6, opacity: 0.8, transparent: true }));
       line.position.copy(mesh.position);
       scene.add(line);
     });
@@ -1556,21 +2051,25 @@ h4 {
     if (top) {
       const roofH = Math.min(model.bbox_h * 0.25, top.w * (model.roof_pitch / 12) * 0.5);
       const roofGeo = new THREE.ConeGeometry(Math.min(top.w, top.d) * 0.55, roofH, 4);
-      const roofMat = new THREE.MeshLambertMaterial({ color: 0x1B1F1A });
+      const roofMat = new THREE.MeshLambertMaterial({ color: 0xC44528 });
       const roof = new THREE.Mesh(roofGeo, roofMat);
       roof.rotation.y = Math.PI / 4;
-      roof.position.set(top.x + top.w / 2 - cx, top.y + top.h + roofH / 2, top.z + top.d / 2 - cz);
+      roof.position.set(top.x + top.w/2 - cx, top.y + top.h + roofH/2, top.z + top.d/2 - cz);
       scene.add(roof);
+      const re = new THREE.EdgesGeometry(roofGeo);
+      const rl = new THREE.LineSegments(re, new THREE.LineBasicMaterial({ color: 0xF5F1E6, opacity: 0.9, transparent: true }));
+      rl.position.copy(roof.position); rl.rotation.copy(roof.rotation);
+      scene.add(rl);
     }
 
     const ground = new THREE.Mesh(
       new THREE.PlaneGeometry(model.bbox_w * 6, model.bbox_d * 6),
-      new THREE.MeshLambertMaterial({ color: 0xE5DECE })
+      new THREE.MeshLambertMaterial({ color: 0xDDD3B8 })
     );
     ground.rotation.x = -Math.PI / 2;
     scene.add(ground);
 
-    const dist = Math.max(model.bbox_w, model.bbox_d, model.bbox_h) * 1.7;
+    const dist = Math.max(model.bbox_w, model.bbox_d, model.bbox_h) * 1.8;
     camera.position.set(dist, dist * 0.75, dist);
     camera.lookAt(0, model.bbox_h / 2, 0);
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -1578,22 +2077,41 @@ h4 {
     controls.enableDamping = true;
     controls.maxPolarAngle = Math.PI * 0.49;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.4;
+    controls.autoRotateSpeed = 0.5;
     container.addEventListener('mousedown', () => { controls.autoRotate = false; });
 
-    function animate() {
-      requestAnimationFrame(animate);
-      controls.update();
-      renderer.render(scene, camera);
-    }
+    function animate() { requestAnimationFrame(animate); controls.update(); renderer.render(scene, camera); }
     animate();
     window.addEventListener('resize', () => {
       const w2 = container.clientWidth;
       renderer.setSize(w2, h);
-      camera.aspect = w2 / h;
-      camera.updateProjectionMatrix();
+      camera.aspect = w2 / h; camera.updateProjectionMatrix();
     });
   }
+</script>
+
+
+<script>
+  // Sync tape-track translateY with scrollY so the "tape" appears to pass through
+  // the page as you scroll. Major ticks every 100vh = roughly "1 foot" of read distance.
+  (function () {
+    const track = document.getElementById('tape-track');
+    const masthead = document.getElementById('masthead');
+    let ticking = false;
+    function onScroll() {
+      const y = window.scrollY;
+      if (track) track.style.transform = `translateY(${-y}px)`;
+      if (masthead) {
+        if (y > window.innerHeight * 0.9) masthead.classList.add('visible');
+        else masthead.classList.remove('visible');
+      }
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(onScroll); ticking = true; }
+    }, { passive: true });
+    onScroll();
+  })();
 </script>
 
 </body>
