@@ -2634,6 +2634,186 @@ h4 {
   color: var(--ink);
   font-weight: 500;
 }
+
+/* ===========================================================================
+ *  v3.1 — cleanup additions (SoV · license · approval · glulam disclaimer)
+ * ========================================================================= */
+
+/* === Glulam disclaimer note (under Quantity Summary) === */
+.glulam-disclaimer {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--paper-deep);
+  border-left: 3px solid var(--burn);
+  font-family: var(--body);
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 64ch;
+}
+.glulam-disclaimer strong {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--burn);
+  display: inline-block;
+  margin-right: 0.4rem;
+}
+
+/* === 17d Scope of Values table === */
+.section--sov {}
+.section--sov .lead { max-width: 72ch; margin-bottom: 2rem; }
+.sov-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--body);
+}
+.sov-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--pencil);
+  padding: 1rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+.sov-table th.numeric, .sov-table td.numeric {
+  text-align: right;
+  font-feature-settings: &#34;tnum&#34; 1, &#34;lnum&#34; 1;
+  white-space: nowrap;
+}
+.sov-table td {
+  padding: 0.85rem 0.75rem;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 0.96rem;
+  color: var(--ink);
+  vertical-align: middle;
+}
+.sov-table td.sov-no {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--burn);
+  width: 36px;
+}
+.sov-table td.sov-title {
+  font-family: var(--industrial);
+  font-weight: 600;
+  font-size: 0.98rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.sov-table td.numeric { font-family: var(--display); font-size: 1.05rem; letter-spacing: 0.005em; }
+.sov-table td.sov-managed { color: var(--burn); font-weight: 600; }
+.sov-table tr.sov-total td {
+  border-top: 2px solid var(--ink);
+  border-bottom: none;
+  font-family: var(--industrial);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 1rem;
+  padding-top: 1rem;
+  color: var(--ink);
+}
+.sov-table tr.sov-total td.numeric {
+  font-family: var(--display);
+  font-size: 1.25rem;
+}
+
+/* === License / Insurance card === */
+.license-card {
+  margin: 2.5rem 0 1rem 0;
+  padding: 1.5rem 1.75rem;
+  background: rgba(245,241,234,0.04);
+  border: 1px solid rgba(245,241,234,0.18);
+  border-left: 3px solid var(--burn);
+  max-width: 60ch;
+}
+.license-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--burn);
+  margin-bottom: 1rem;
+}
+.license-list {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.65rem 1.25rem;
+  margin: 0;
+  font-family: var(--body);
+}
+.license-list dt {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(245,241,234,0.7);
+}
+.license-list dd {
+  margin: 0;
+  font-size: 0.96rem;
+  color: var(--paper);
+}
+
+/* === Approval block === */
+.approval-card {
+  margin: 2.5rem 0 1rem 0;
+  padding: 1.75rem;
+  background: var(--burn);
+  color: var(--paper);
+}
+.approval-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(245,241,234,0.4);
+  padding-bottom: 0.6rem;
+}
+.approval-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.approval-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(245,241,234,0.85);
+  padding: 0.75rem 0.75rem 0.75rem 0;
+  border-bottom: 1px solid rgba(245,241,234,0.2);
+  vertical-align: top;
+  width: 38%;
+}
+.approval-table td {
+  padding: 0.75rem 0;
+  font-family: var(--body);
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--paper);
+  border-bottom: 1px solid rgba(245,241,234,0.2);
+}
+.approval-table tr:last-child th,
+.approval-table tr:last-child td { border-bottom: none; }
 </style>
 </head>
 <body>
@@ -2784,7 +2964,7 @@ h4 {
     <dt>Structural engineer</dt><dd>Dynamic Structures</dd>
     
     <dt>Plan set</dt><dd>2021-08-26</dd>
-    <dt>Jurisdiction</dt><dd>Hideout, UT · 2015 IRC</dd>
+    <dt>Code basis</dt><dd>Code basis shown on the reviewed plan set: <strong>2015 IRC</strong>. Final framing to follow the approved permit set and current jurisdictional requirements enforced by Hideout, UT.</dd>
     
   </dl>
 </section>
@@ -2818,7 +2998,7 @@ h4 {
     <div class="snapshot snapshot--meta">
       <span class="snapshot-name">Project size</span>
       <div class="snapshot-stat">4,876<small>sf</small></div>
-      <span class="snapshot-duration">heated · 1.0 story</span>
+      <span class="snapshot-duration">heated · Single-story over full walkout lower level</span>
     </div>
     <div class="snapshot snapshot--meta">
       <span class="snapshot-name">Proposal basis</span>
@@ -3433,6 +3613,9 @@ h4 {
     </tbody>
   </table>
   <p class="muted">Anything marked TBD requires the final structural sheets (or a verified field measurement) before we lock the number.</p>
+  
+  <p class="glulam-disclaimer"><strong>Architectural vs structural confirmation —</strong> Architectural and rendering review indicates exposed glulam and vaulted-ceiling conditions in the great room volume. Final member sizes, connection details, and any steel/hardware scope remain pending until structural sheets S2.1 / S2.2 and the final RCP are received.</p>
+  
 </section>
 
 
@@ -3566,11 +3749,11 @@ h4 {
       </div>
     </div>
     <ol class="cost-logic">
-      <li><strong>Plan reading.</strong> Three vision models read your plan set and converged on the plan features (4,876 sf, 1.0 story, roof complexity 4/5).</li>
-      <li><strong>Comp retrieval.</strong> We pulled the 3 most similar Sundance framing projects from our records and looked at what they actually cost.</li>
-      <li><strong>Synthesized estimate.</strong> Anthropic/OpenAI/Gemini priced the project independently and reconciled. Base = $165,000.</li>
-      <li><strong>Managed premium.</strong> +$17,000 for priority scheduling, dedicated PM, weekly photo updates, and a 1-week schedule buffer.</li>
-      <li><strong>Validation.</strong> Andre reviews every output before it goes out to a builder.</li>
+      <li><strong>Plan review.</strong> Digital plan review tools were used to cross-check takeoff assumptions, plan features (4,876 sf, single-story over full walkout lower level, roof complexity 4/5), and complexity flags against the architectural set.</li>
+      <li><strong>Comp retrieval.</strong> The 3 most similar Sundance framing projects from our records were pulled and reviewed for what they actually cost.</li>
+      <li><strong>Reconciled estimate.</strong> Comp pricing was reconciled against the project-specific complexity flags (walkout, rotated garage, exposed beams, complex roof) to land a defensible Base = $165,000.</li>
+      <li><strong>Managed premium.</strong> +$17,000 for priority scheduling, dedicated PM, weekly photo updates, and the schedule coordination buffer.</li>
+      <li><strong>Andre's review.</strong> Final pricing was reviewed and approved by Andre / Sundance before release.</li>
     </ol>
   </div>
 </section>
@@ -3585,7 +3768,7 @@ h4 {
       <h2>Pricing Context</h2>
     </div>
   </div>
-  <p class="lead">At $182,000, the recommended Managed Package represents approximately <strong>$37/sf</strong> against the reviewed 4,876 sf residence. That's not a generic framing multiplier — it reflects roof complexity, glulam handling, equipment mobilization, walkout sequencing, garage geometry, daily cleanup, and managed communication.</p>
+  <p class="lead">At $182,000, the recommended Managed Package represents approximately <strong>$37/sf</strong> against the reviewed <strong>4,876 sf</strong> heated area. The gross framed work is larger when garage, decks, covered porches, overhangs, and roof complexity are considered — the Managed package is best understood as a project-specific framing number, not a simple heated-square-foot multiplier.</p>
   <table class="pricing-factor-table">
     <thead><tr><th>Driver</th><th>Why it affects price</th></tr></thead>
     <tbody>
@@ -3675,6 +3858,105 @@ h4 {
 
 
 
+
+<section class="section section--sov">
+  <div class="section-header">
+    <span class="section-no">17d</span>
+    <div>
+      <span class="eyebrow">Scope of Values</span>
+      <h2>How the price breaks down by phase.</h2>
+    </div>
+  </div>
+  <p class="lead">Proportional allocation by phase duration. Not a phase-by-phase invoice — Sundance bills against the package total per the agreed draw schedule. Shown for builder transparency.</p>
+  <table class="sov-table">
+    <thead>
+      <tr>
+        <th>№</th>
+        <th>Phase</th>
+        <th class="numeric">% of base</th>
+        <th class="numeric">Base value</th>
+        <th class="numeric">Managed value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td class="sov-no">01</td>
+        <td class="sov-title">Pre-frame coordination</td>
+        <td class="numeric">3.0%</td>
+        <td class="numeric">$5,000</td>
+        <td class="numeric sov-managed">$5,500</td>
+      </tr>
+      
+      <tr>
+        <td class="sov-no">02</td>
+        <td class="sov-title">Layout &amp; foundation verification</td>
+        <td class="numeric">5.0%</td>
+        <td class="numeric">$8,200</td>
+        <td class="numeric sov-managed">$9,100</td>
+      </tr>
+      
+      <tr>
+        <td class="sov-no">03</td>
+        <td class="sov-title">Lower level / floor system</td>
+        <td class="numeric">16.0%</td>
+        <td class="numeric">$26,400</td>
+        <td class="numeric sov-managed">$29,100</td>
+      </tr>
+      
+      <tr>
+        <td class="sov-no">04</td>
+        <td class="sov-title">Main level framing</td>
+        <td class="numeric">22.0%</td>
+        <td class="numeric">$36,300</td>
+        <td class="numeric sov-managed">$40,000</td>
+      </tr>
+      
+      <tr>
+        <td class="sov-no">05</td>
+        <td class="sov-title">Garage wing framing</td>
+        <td class="numeric">10.0%</td>
+        <td class="numeric">$16,500</td>
+        <td class="numeric sov-managed">$18,200</td>
+      </tr>
+      
+      <tr>
+        <td class="sov-no">06</td>
+        <td class="sov-title">Glulam &amp; structural-steel setting</td>
+        <td class="numeric">8.0%</td>
+        <td class="numeric">$13,200</td>
+        <td class="numeric sov-managed">$14,600</td>
+      </tr>
+      
+      <tr>
+        <td class="sov-no">07</td>
+        <td class="sov-title">Roof framing</td>
+        <td class="numeric">20.0%</td>
+        <td class="numeric">$33,000</td>
+        <td class="numeric sov-managed">$36,400</td>
+      </tr>
+      
+      <tr>
+        <td class="sov-no">08</td>
+        <td class="sov-title">Sheathing &amp; framing punchlist</td>
+        <td class="numeric">16.0%</td>
+        <td class="numeric">$26,400</td>
+        <td class="numeric sov-managed">$29,100</td>
+      </tr>
+      
+      <tr class="sov-total">
+        <td></td>
+        <td>Package total</td>
+        <td class="numeric">100%</td>
+        <td class="numeric">$165,000</td>
+        <td class="numeric sov-managed">$182,000</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+
+
 <section class="section">
   <div class="section-header">
     <span class="section-no">18</span>
@@ -3755,6 +4037,18 @@ h4 {
       price listed for the selected package. Valid 30 days from the date below. Upon
       acceptance, Client pays a 10% deposit plus materials needed to start.
     </p>
+    
+    <div class="license-card">
+      <span class="license-label">Licensing &amp; Insurance</span>
+      <dl class="license-list">
+        <dt>Utah DOPL license №</dt><dd>[License # to be confirmed]</dd>
+        <dt>Workers' compensation</dt><dd>Active</dd>
+        <dt>General liability</dt><dd>Active</dd>
+        <dt>Certificate of insurance</dt><dd>Certificate of Insurance (COI) available upon request prior to mobilization.</dd>
+      </dl>
+    </div>
+    
+
     <h3>Sundance agrees to</h3>
     <ul>
       <li>Procure and supply equipment required to perform the labor.</li>
@@ -3770,6 +4064,22 @@ h4 {
       <li>Provide waste-management bins for the duration of the project.</li>
       <li>Maintain fire/flood and general liability insurance.</li>
     </ul>
+    
+    <div class="approval-card">
+      <span class="approval-label">Proposal Acceptance</span>
+      <table class="approval-table">
+        <tbody>
+          <tr><th>Selected package</th><td>☐ Base $(165,000)&nbsp;&nbsp;&nbsp;☐ Managed $(182,000)</td></tr>
+          <tr><th>Owner / Client</th><td>Gelfand Project — signature: ____________________________</td></tr>
+          <tr><th>Date</th><td>__________________</td></tr>
+          <tr><th>Sundance representative</th><td>Andre Mataele — signature: ____________________________</td></tr>
+          <tr><th>Deposit due upon acceptance</th><td>10% of the selected package total + materials needed to start</td></tr>
+          <tr><th>Proposal valid through</th><td>30 days from May 15, 2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+
     <div class="signature">
       <div><div class="line"></div><div class="lbl">Andre Mataele · Sundance Creek Group LLC · May 15, 2026</div></div>
       <div><div class="line"></div><div class="lbl">Gelfand Project · Date</div></div>
